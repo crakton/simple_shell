@@ -12,7 +12,7 @@ int exec(char **args)
 	pid_t pid = 0;
 	int status = 0, exec_status = 0;
 
-	pid = fork(); 
+	pid = fork();
 	if (pid == -1)
 	/* Child process creation */
 		_prompt("process creation failed\n", 7);

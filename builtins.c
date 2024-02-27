@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * builtins - check if arguments are from 
- * unix shell command
- * @args: points to the arguments array pointers
- * @exit_stat: exist status
- * Return: 0 if it is a builtin command, -1 not a builtin command
- */
+* builtins - check if arguments are from
+* unix shell command
+* @args: points to the arguments array pointers
+* @exit_stat: exist status
+* Return: 0 if it is a builtin command, -1 not a builtin command
+*/
 
 int builtins(char **args, int exit_stat)
 {

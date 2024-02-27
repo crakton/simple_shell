@@ -10,7 +10,7 @@ char *_getenv(char *global_var)
 	int i = 0;
 	const char __SETTER__[] = "=";
 	char *env_token, *envdup, *env_token_dup;
-	
+
 	if (global_var != NULL)
 	{
 		if (environ == NULL)

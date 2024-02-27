@@ -1,52 +1,48 @@
 #include "shell.h"
-
 /**
  * main - entry file of the simple shell program
  * Return: 0 on success
  */
-
-int main (void)
+int main(void)
 {
-	ssize_t _bytessize_ = 0;
-	size_t _bufsize_ = 0;
-	char *entry = NULL, *args[20];
-	int counter = 1, verify_status =0;
-	int exist_status = 0, exit_status = 0;
-	int builtins_status = 0;
+	ssize_t _b = 0;
+	size_t _s = 0;
+	char *e = NULL, *args[20];
+	int i = 1, v = 0, ex = 0, _e = 0, b = 0;
 
 	_prompt("$ ", 2);
-	_bytessize_ = getline(&entry, &_bufsize_, stdin);
-	while (_bytessize_ != -1)
+	_b = getline(&e, &_s, stdin);
+	while (_b != -1)
 	{
-		if (*entry != '\n')
+		if (*e != '\n')
 		{
-			cmds(entry, args);
+			cmds(e, args);
 			if (args[0] != NULL)
 			{
-				exist_status = verify(args[0]);
-				if (exist_status != 0)
+				ex = verify(args[0]);
+				if (ex != 0)
 				{
-					verify_status = env_path(args);
-					if (verify_status == 0)
-						exit_status = exec(args), free(*args);
+					v = env_path(args);
+					if (v == 0)
+						_e = exec(args), free(*args);
 					else
 					{
-						builtins_status = builtins(args, exist_status);
-						if (builtins_status != 0)
-							exit_status = err_print(args, counter), free(entry);
+						b = builtins(args, ex);
+						if (b != 0)
+							_e = err_print(args, i), free(e);
 					}
 				}
 				else
-					exit_status = exec(args), free(entry);
+					_e = exec(args), free(e);
 			}
 			else
-				free(entry);
+				free(e);
 		}
-		else if (*entry == '\n')
-			free(entry);
-		entry = NULL, counter++;
-		_prompt("$ ", 2), _bytessize_ = getline(&entry, &_bufsize_, stdin);
+		else if (*e == '\n')
+			free(e);
+		e = NULL, i++;
+		_prompt("$ ", 2), _b = getline(&e, &_s, stdin);
 	}
-	memory(entry);
-	return (exit_status);
+	memory(e);
+	return (_e);
 }

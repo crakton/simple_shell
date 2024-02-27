@@ -9,9 +9,9 @@
 
 char *append(char *dir, char *cmd)
 {
-	int i,j = 0, len1, len2;
+	int i, j = 0, len1, len2;
 	char *cmd_path = NULL;
-	
+
 	if (cmd_path == NULL || cmd == NULL)
 		return (NULL);
 	len1 = _strlen(dir);

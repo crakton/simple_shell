@@ -9,7 +9,7 @@
 int verify(char *pathname)
 {
 	int status;
-	
+
 	status = (open(pathname, O_RDONLY));
 	if (status != -1)
 	{
@@ -17,5 +17,5 @@ int verify(char *pathname)
 		return (0);
 	}
 	else
-		return -1;
+		return (-1);
 }
